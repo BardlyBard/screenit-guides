@@ -13,7 +13,7 @@
 </style></head><body>
 <div class="wrap" id="app"></div>
 <script>
-  const DATA = {"title":"DART","passwordHash":"88ef22601d40eec472cd46b2a77ab9e58f9bd975812819ad74f2068edff0a088","gateKey":"c/dart","folders":[{"name":"Training","href":"training/"}],"guides":[]};
+  const DATA = {"title":"DART","passwordHash":"5a5c3f75ebced12129fcfd5391e500813b9c9b22ae6be6ff6ac7de707d8215d7","gateKey":"c/dart","folders":[{"name":"Training","href":"training/"}],"guides":[]};
   async function sha256(text) {
     const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
     return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,"0")).join("");
