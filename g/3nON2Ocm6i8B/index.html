@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="robots" content="noindex"/>
+  <title>Test 6</title>
+  <style>
+    :root { color-scheme: light; font-family: "Source Sans 3", "Segoe UI", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #0f1720; color: #e8eef4; }
+    .frame { max-width: 920px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; }
+    header { padding: 16px 20px 8px; }
+    h1 { font-size: 1.15rem; margin: 0 0 4px; font-weight: 650; }
+    .sub { color: #9aa8b5; font-size: .9rem; margin: 0; }
+    .stage { background: #1a2430; flex: 1; display: flex; align-items: center; justify-content: center; min-height: 360px; }
+    .shot { position: relative; display: inline-block; max-width: 100%; line-height: 0; }
+    .shot img { max-width: 100%; max-height: 62vh; display: block; }
+    .hotspot { position: absolute; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%;
+      border: 3px solid #3dd6c6; box-shadow: 0 0 0 6px rgba(61,214,198,.25); pointer-events: none; }
+    .cursor { position: absolute; width: 18px; height: 18px; margin: -2px 0 0 -2px; pointer-events: none;
+      background: #111; clip-path: polygon(0 0, 0 100%, 28% 72%, 55% 100%, 68% 92%, 42% 64%, 100% 64%);
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,.45)); }
+    .caption { padding: 16px 20px 8px; display: flex; gap: 12px; align-items: flex-start; }
+    .n { flex: none; width: 32px; height: 32px; border-radius: 50%; background: #3dd6c6; color: #0f1720;
+      display: grid; place-items: center; font-weight: 700; }
+    .controls { padding: 8px 20px 20px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    button, select { background: #243140; color: #e8eef4; border: 0; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+    button:hover, select:hover { background: #2d3d4f; }
+    select { max-width: 220px; }
+    .bar { flex: 1; height: 4px; background: #243140; border-radius: 99px; overflow: hidden; min-width: 80px; }
+    .bar > i { display: block; height: 100%; background: #3dd6c6; width: 0; }
+    .tabs { display: flex; gap: 8px; padding: 0 20px 8px; flex-wrap: wrap; }
+    .tabs button.on { background: #3dd6c6; color: #0f1720; }
+    .read { padding: 8px 20px 40px; }
+    .read .card { margin: 0 0 28px; }
+    .read img { max-width: 100%; border: 1px solid #3dd6c6; display: block; margin: 8px auto; }
+    .read .n { margin-bottom: 8px; }
+    .gate { padding: 48px 24px; text-align: center; }
+    .gate input { padding: 10px 12px; border-radius: 8px; border: 1px solid #334; background: #1a2430; color: inherit; }
+  </style>
+</head>
+<body>
+  <div class="frame" id="app"></div>
+  <script>
+    const GUIDE = {"title":"Test 6","description":"Browse the DART shop, check the size guide, add Vanilla Double Knee in 32–33 (M) to the cart, then open Community.","passwordHash":"79af7871433de9256a5a13e123ed27dd358e02072e1964ac11c6d6cf39c5af82","hasPdf":true,"steps":[{"instruction":"Click SHOP in the top menu to browse the catalog.","screenshot":"images/GplpdORDPXSn.jpg","hotspot":{"x":0.3762833675564682,"y":0.19813278008298754},"narration":"audio/GplpdORDPXSn.mp3"},{"instruction":"The shop page opens.","screenshot":"images/8w24Q95rThTL.jpg","hotspot":null,"narration":"audio/8w24Q95rThTL.mp3"},{"instruction":"Click NAVY JORTS.","screenshot":"images/PzLa3V27VGrI.jpg","hotspot":{"x":0.5754620123203286,"y":0.783195020746888},"narration":"audio/PzLa3V27VGrI.mp3"},{"instruction":"The NAVY JORTS product page opens.","screenshot":"images/byB61UIOi3Nx.jpg","hotspot":null,"narration":"audio/byB61UIOi3Nx.mp3"},{"instruction":"Click SIZE GUIDE in the top menu.","screenshot":"images/qGydLiJHSUTI.jpg","hotspot":{"x":0.4075975359342916,"y":0.2012448132780083},"narration":"audio/qGydLiJHSUTI.mp3"},{"instruction":"The Size guide page opens.","screenshot":"images/pERSfGMmUCOf.jpg","hotspot":null,"narration":"audio/pERSfGMmUCOf.mp3"},{"instruction":"Click the bag icon to open the cart.","screenshot":"images/lGEffQBst6NL.jpg","hotspot":{"x":0.8968172484599589,"y":0.1462655601659751},"narration":"audio/lGEffQBst6NL.mp3"},{"instruction":"The cart opens.","screenshot":"images/t7UH7vr-OJPf.jpg","hotspot":null,"narration":"audio/t7UH7vr-OJPf.mp3"},{"instruction":"Click ✕ to close the cart.","screenshot":"images/_PasqTwP1umi.jpg","hotspot":{"x":0.9784394250513347,"y":0.04149377593360996},"narration":"audio/_PasqTwP1umi.mp3"},{"instruction":"Closing the cart returns you to the Size guide.","screenshot":"images/U5f6i5wHgOVt.jpg","hotspot":null,"narration":"audio/U5f6i5wHgOVt.mp3"},{"instruction":"Click SHOP in the top menu.","screenshot":"images/s8TtVmrG-iBH.jpg","hotspot":{"x":0.37474332648870634,"y":0.2053941908713693},"narration":"audio/s8TtVmrG-iBH.mp3"},{"instruction":"The shop page opens.","screenshot":"images/17mHsXvZeM7_.jpg","hotspot":null,"narration":"audio/17mHsXvZeM7_.mp3"},{"instruction":"Click VANILLA DOUBLE KNEE.","screenshot":"images/_bfFOf6o08o0.jpg","hotspot":{"x":0.4553388090349076,"y":0.6130705394190872},"narration":"audio/_bfFOf6o08o0.mp3"},{"instruction":"The VANILLA DOUBLE KNEE product page opens.","screenshot":"images/vN4KaudTrzwZ.jpg","hotspot":null,"narration":"audio/vN4KaudTrzwZ.mp3"},{"instruction":"Click size 32-33 (M).","screenshot":"images/eS065H7mBecM.jpg","hotspot":{"x":0.6129363449691991,"y":0.5912863070539419},"narration":"audio/eS065H7mBecM.mp3"},{"instruction":"Click the bag icon to open the cart.","screenshot":"images/kXzycthEa2aI.jpg","hotspot":{"x":0.8839835728952772,"y":0.16804979253112035},"narration":"audio/kXzycthEa2aI.mp3"},{"instruction":"The cart opens.","screenshot":"images/AiaNOURLpthS.jpg","hotspot":null,"narration":"audio/AiaNOURLpthS.mp3"},{"instruction":"Click the dimmed product page to close the cart.","screenshot":"images/TKybvXSr-0Yj.jpg","hotspot":{"x":0.6688911704312115,"y":0.6680497925311203},"narration":"audio/TKybvXSr-0Yj.mp3"},{"instruction":"The cart closes and you return to VANILLA DOUBLE KNEE.","screenshot":"images/7Tb0gDrPn4PF.jpg","hotspot":null,"narration":"audio/7Tb0gDrPn4PF.mp3"},{"instruction":"Click Add To Cart.","screenshot":"images/UY8J7NTp5QO9.jpg","hotspot":{"x":0.6760780287474333,"y":0.7105809128630706},"narration":"audio/UY8J7NTp5QO9.mp3"},{"instruction":"The cart opens.","screenshot":"images/FuZapWXlm4_l.jpg","hotspot":null,"narration":"audio/FuZapWXlm4_l.mp3"},{"instruction":"Click outside the cart to close it.","screenshot":"images/rhedvepYmiqu.jpg","hotspot":{"x":0.7325462012320328,"y":0.2676348547717842},"narration":"audio/rhedvepYmiqu.mp3"},{"instruction":"The cart closes and you return to VANILLA DOUBLE KNEE.","screenshot":"images/73xK7eQTduDu.jpg","hotspot":null,"narration":"audio/73xK7eQTduDu.mp3"},{"instruction":"Click COMMUNITY in the top menu.","screenshot":"images/TzZ4l36XwrSa.jpg","hotspot":{"x":0.528747433264887,"y":0.1908713692946058},"narration":"audio/TzZ4l36XwrSa.mp3"},{"instruction":"The COMMUNITY page opens.","screenshot":"images/F7SaYYu3dO8t.jpg","hotspot":null,"narration":"audio/F7SaYYu3dO8t.mp3"}]};
+    const app = document.getElementById("app");
+
+    async function sha256(text) {
+      const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+      return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,"0")).join("");
+    }
+
+    function renderGate() {
+      app.innerHTML = '<div class="gate"><h1>This guide is locked</h1><p class="sub">Enter the share password you were sent.</p><p><input id="pw" type="password" placeholder="Password"/> <button id="go">Open</button></p><p id="err" class="sub"></p></div>';
+      document.getElementById("go").onclick = async () => {
+        const value = document.getElementById("pw").value;
+        if (await sha256(value) === GUIDE.passwordHash) { sessionStorage.setItem("ok:"+location.pathname, "1"); renderPlayer(); }
+        else document.getElementById("err").textContent = "That password does not match.";
+      };
+    }
+
+    function renderRead() {
+      const cards = GUIDE.steps.map(function (step, idx) {
+        const pic = step.screenshot ? '<img src="' + step.screenshot + '" alt=""/>' : "";
+        return '<article class="card"><div class="n">' + (idx + 1) + '</div><div>' +
+          (step.instruction || "").replace(/</g, "&lt;") + pic + "</div></article>";
+      }).join("");
+      return '<div class="read">' + cards +
+        (GUIDE.hasPdf ? '<p><a href="procedure.pdf">Download printable PDF</a></p>' : "") +
+        "</div>";
+    }
+
+    function renderPlayer() {
+      let i = 0, playing = true, narrate = true, timer = null, prev = null, view = "movie";
+      app.innerHTML = `
+        <header><h1></h1><p class="sub"></p></header>
+        <div class="tabs">
+          <button data-view="movie" class="on">Watch movie</button>
+          <button data-view="read">Read procedure</button>
+        </div>
+        <div data-pane="movie">
+          <div class="stage"><div class="shot"><img alt="Step screenshot"/><div class="hotspot" hidden></div><div class="cursor" hidden></div></div></div>
+          <div class="caption"><div class="n"></div><div class="text"></div></div>
+          <div class="controls">
+            <button data-act="prev">Prev</button>
+            <button data-act="toggle">Pause</button>
+            <button data-act="next">Next</button>
+            <button data-act="voice">Narration on</button>
+            <select data-act="voice-pick" aria-label="Narration voice"></select>
+            <div class="bar"><i></i></div>
+          </div>
+        </div>
+        <div data-pane="read" hidden></div>`;
+      const h1 = app.querySelector("h1");
+      const sub = app.querySelector(".sub");
+      const img = app.querySelector("img");
+      const spot = app.querySelector(".hotspot");
+      const cur = app.querySelector(".cursor");
+      const n = app.querySelector(".n");
+      const text = app.querySelector(".text");
+      const toggle = app.querySelector('[data-act="toggle"]');
+      const voice = app.querySelector('[data-act="voice"]');
+      const bar = app.querySelector(".bar > i");
+      h1.textContent = GUIDE.title;
+      sub.textContent = GUIDE.description || (GUIDE.steps.length + " steps");
+
+      function scoreVoice(v) {
+        const n = (v.name + " " + v.voiceURI).toLowerCase();
+        if (/zarvox|trinoids|whisper|bad news|cellos|boing|bubbles|ralph|novelty/.test(n)) return -200;
+        let s = 0;
+        if (/premium|enhanced|neural|natural|siri|wavenet|studio/.test(n)) s += 60;
+        if (/google/.test(n)) s += 40;
+        if (/microsoft (aria|ava|andrew|emma|jenny)/.test(n)) s += 35;
+        if (/alex|fred|victoria/.test(n) && !/premium|enhanced/.test(n)) s -= 15;
+        return s;
+      }
+      function englishVoices() {
+        return (window.speechSynthesis ? speechSynthesis.getVoices() : []).filter(function (v) {
+          return /^en\b/i.test(v.lang || "en");
+        });
+      }
+      function pickVoice() {
+        const list = englishVoices();
+        const saved = localStorage.getItem("screenit-narration-voice");
+        return list.find(function (v) { return v.voiceURI === saved; })
+          || list.slice().sort(function (a, b) { return scoreVoice(b) - scoreVoice(a); })[0]
+          || null;
+      }
+      function fillVoices() {
+        const sel = app.querySelector('[data-act="voice-pick"]');
+        if (!sel) return;
+        const list = englishVoices().slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
+        const current = pickVoice();
+        sel.innerHTML = list.map(function (v) {
+          return "<option value=\"" + v.voiceURI.replace(/"/g, "") + "\">" + v.name + "</option>";
+        }).join("");
+        if (current) sel.value = current.voiceURI;
+      }
+      let clip = null;
+      function speak(step) {
+        if (clip) { clip.pause(); clip = null; }
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        if (!narrate || !step) return;
+        if (step.narration) {
+          clip = new Audio(step.narration);
+          clip.play().catch(function () {});
+          return;
+        }
+        const u = new SpeechSynthesisUtterance(step.instruction || "");
+        const v = pickVoice();
+        if (v) u.voice = v;
+        u.rate = 0.94;
+        window.speechSynthesis.speak(u);
+      }
+
+      function moveCursor(dest) {
+        const start = prev || dest;
+        prev = dest;
+        if (!dest) { cur.hidden = true; return; }
+        cur.hidden = false;
+        const t0 = performance.now();
+        function tick(now) {
+          const t = Math.min(1, (now - t0) / 700);
+          const e = t < 0.5 ? 2*t*t : -1 + (4-2*t)*t;
+          cur.style.left = ((start.x + (dest.x - start.x) * e) * 100) + "%";
+          cur.style.top = ((start.y + (dest.y - start.y) * e) * 100) + "%";
+          if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      function show() {
+        const step = GUIDE.steps[i];
+        if (!step) return;
+        n.textContent = String(i + 1);
+        text.textContent = step.instruction;
+        img.src = step.screenshot || "";
+        if (step.hotspot) {
+          spot.hidden = false;
+          spot.style.left = (step.hotspot.x * 100) + "%";
+          spot.style.top = (step.hotspot.y * 100) + "%";
+          moveCursor(step.hotspot);
+        } else { spot.hidden = true; cur.hidden = true; }
+        bar.style.width = ((i + 1) / GUIDE.steps.length * 100) + "%";
+        speak(step);
+      }
+      function next() { i = (i + 1) % Math.max(GUIDE.steps.length, 1); show(); }
+      function prev() { i = (i - 1 + GUIDE.steps.length) % Math.max(GUIDE.steps.length, 1); show(); }
+      function setPlaying(on) {
+        playing = on;
+        toggle.textContent = on ? "Pause" : "Play";
+        clearTimeout(timer);
+        if (on) timer = setTimeout(function loop(){ next(); timer = setTimeout(loop, narrate ? 6500 : 2800); }, narrate ? 6500 : 2800);
+      }
+      app.querySelector('[data-act="next"]').onclick = () => { next(); if (playing) setPlaying(true); };
+      app.querySelector('[data-act="prev"]').onclick = () => { prev(); if (playing) setPlaying(true); };
+      toggle.onclick = () => setPlaying(!playing);
+      voice.onclick = () => {
+        narrate = !narrate;
+        voice.textContent = narrate ? "Narration on" : "Narration off";
+        if (!narrate && window.speechSynthesis) window.speechSynthesis.cancel();
+      };
+      const voicePick = app.querySelector('[data-act="voice-pick"]');
+      if (voicePick) {
+        voicePick.onchange = function () {
+          localStorage.setItem("screenit-narration-voice", voicePick.value);
+          speak(GUIDE.steps[i]);
+        };
+      }
+      fillVoices();
+      if (window.speechSynthesis) speechSynthesis.addEventListener("voiceschanged", fillVoices);
+      const moviePane = app.querySelector('[data-pane="movie"]');
+      const readPane = app.querySelector('[data-pane="read"]');
+      readPane.innerHTML = renderRead();
+      app.querySelectorAll("[data-view]").forEach(function (btn) {
+        btn.onclick = function () {
+          view = btn.getAttribute("data-view");
+          moviePane.hidden = view !== "movie";
+          readPane.hidden = view !== "read";
+          app.querySelectorAll("[data-view]").forEach(function (b) { b.classList.toggle("on", b === btn); });
+          if (view === "read") setPlaying(false);
+          else setPlaying(true);
+        };
+      });
+      show();
+      setPlaying(true);
+    }
+
+    if (GUIDE.passwordHash && sessionStorage.getItem("ok:"+location.pathname) !== "1") renderGate();
+    else renderPlayer();
+  </script>
+</body>
+</html>
