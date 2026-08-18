@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex"/><title>Training</title>
+<style>
+  :root { color-scheme: light; font-family: "Source Sans 3","Segoe UI",sans-serif; }
+  body { margin: 0; background: #f4f1ea; color: #1c2430; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px; }
+  a { color: #0f766e; }
+  .gate { text-align: center; padding: 48px 16px; }
+  input, button { font: inherit; padding: 8px 12px; border-radius: 8px; border: 1px solid #d9d2c5; }
+  button { background: #0f766e; color: #fff; border-color: #134e4a; cursor: pointer; }
+  li { margin: 8px 0; }
+</style></head><body>
+<div class="wrap" id="app"></div>
+<script>
+  const DATA = {"title":"Training","passwordHash":"88ef22601d40eec472cd46b2a77ab9e58f9bd975812819ad74f2068edff0a088","gateKey":"c/dart","folders":[],"guides":[{"name":"Test 6","href":"3nON2Ocm6i8B/"}]};
+  async function sha256(text) {
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2,"0")).join("");
+  }
+  function list() {
+    const folders = DATA.folders.map(f => '<li><a href="'+f.href+'">'+f.name+'</a></li>').join("");
+    const guides = DATA.guides.map(g => '<li><a href="'+g.href+'">'+g.name+'</a></li>').join("");
+    document.getElementById("app").innerHTML =
+      "<h1>"+DATA.title+"</h1>" +
+      (folders ? "<h2>Folders</h2><ul>"+folders+"</ul>" : "") +
+      (guides ? "<h2>Guides</h2><ul>"+guides+"</ul>" : "") +
+      (!folders && !guides ? "<p>Nothing published here yet.</p>" : "");
+  }
+  function gate() {
+    document.getElementById("app").innerHTML =
+      '<div class="gate"><h1>This folder is locked</h1><p>Enter the company password you were sent.</p><p><input id="pw" type="password"/> <button id="go">Open</button></p><p id="err"></p></div>';
+    document.getElementById("go").onclick = async function () {
+      const value = document.getElementById("pw").value;
+      if (await sha256(value) === DATA.passwordHash) {
+        sessionStorage.setItem("ok:"+DATA.gateKey, "1");
+        list();
+      } else document.getElementById("err").textContent = "That password does not match.";
+    };
+  }
+  if (DATA.passwordHash && sessionStorage.getItem("ok:"+DATA.gateKey) !== "1") gate();
+  else list();
+</script></body></html>
